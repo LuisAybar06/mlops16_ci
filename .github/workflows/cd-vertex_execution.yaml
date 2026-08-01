@@ -29,16 +29,16 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m venv venv
-          source ven/bin/activate
+          source venv/bin/activate
           pip install -r requirements.txt
           pip install jupyter
 
       - name: Registry Jupyter Kernel
         run: |
-          source ven/bin/activate
+          source venv/bin/activate
           python -m ipykernel install --user --name=venv
 
       - name: Execute Noteboock
         run: |
-          source ven/bin/activate
-          papermill my_app/pipeline_bigquery_component.ipynb my_app/output.ipynb -k venv
+          source venv/bin/activate
+          papermill my_app/pipeline_bigquery_component.ipynb my_app/output.ipynb -k
