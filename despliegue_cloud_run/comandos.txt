@@ -5,6 +5,6 @@ gcloud builds submit --tag gcr.io/mlops15/pipeline-job-runner
 gcloud run jobs deploy run-pipeline-job \
   --image us-central1-docker.pkg.dev/$GOOGLE_PROJECT/$IMAGE_REPOSITORY/$IMAGE_NAME \
   --region $REGION \
-  --service-account cloud-run-sa@$GOOGLE_PROJECT.iam.gserviceaccount.com \
-  --set-env-vars PROJECT_ID=xxx,LOCATION=us-central1,PIPELINE_PATH=xxx,SERVICE_ACCOUNT=xxx,VALIDA_TABLE=xxx.xxx.census_by_age,INPUT_AGE=60 \
+  --service-account cloud-run-job@$GOOGLE_PROJECT.iam.gserviceaccount.com \
+  --set-env-vars PROJECT_ID=mlops16,LOCATION=us-central1,PIPELINE_PATH=gs://mlops16/marketing/clustering_model/pipeline_prediction/pipeline_bigquery.json,SERVICE_ACCOUNT=vertex-procesing@mlops16.iam.gserviceaccount.com,VALIDA_TABLE=mlops16.github_mlops.census_by_age,INPUT_AGE=60 \
   --quiet
