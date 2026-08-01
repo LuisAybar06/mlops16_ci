@@ -41,9 +41,9 @@ jobs:
       - name: Deploy Cloud Run Job
         run: |
           gcloud run jobs deploy run-pipeline-job \
-            --image us-central1-docker.pkg.dev/$GOOGLE_PROJECT/$IMAGE_REPOSITORY/$IMAGE_NAME \
+            --image us-central1-docker.pkg.dev/$PROJECT_ID/$IMAGE_REPOSITORY/$IMAGE_NAME \
             --region $REGION \
-            --service-account cloud-run-job@$GOOGLE_PROJECT.iam.gserviceaccount.com \
+            --service-account cloud-run-job@$PROJECT_ID.iam.gserviceaccount.com \
             --set-env-vars PROJECT_ID=mlops16,LOCATION=us-central1,PIPELINE_PATH=gs://mlops16/marketing/clustering_model/pipeline_prediction/pipeline_bigquery.json,SERVICE_ACCOUNT=vertex-procesing@mlops16.iam.gserviceaccount.com,VALIDA_TABLE=mlops16.github_mlops.census_by_age,INPUT_AGE=60 \
             --quiet
 
